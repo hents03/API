@@ -1,0 +1,42 @@
+openapi: 3.0.0
+info:
+  title: API des étudiants
+  version: 1.0.0
+
+paths:
+  /students/{id}:
+    get:
+      summary: information about students
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Succes
+          content:
+            application/json:
+              example:
+                id: 1
+                name: John Doe
+                age: 20
+
+  /students:
+    post:
+      summary: Ajoute un nouvel étudiant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '201':
+          description: sucess 
