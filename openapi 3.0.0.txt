@@ -6,7 +6,7 @@ info:
 paths:
   /students/{id}:
     get:
-      summary: information about students
+      summary: Obtient les détails d'un étudiant
       parameters:
         - name: id
           in: path
@@ -15,7 +15,7 @@ paths:
             type: integer
       responses:
         '200':
-          description: Succes
+          description: Succès
           content:
             application/json:
               example:
@@ -39,4 +39,27 @@ paths:
                   type: integer
       responses:
         '201':
-          description: sucess 
+          description: Créé avec succès
+
+  /students/search:
+    get:
+      summary: Recherche d'étudiants
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succès
+          content:
+            application/json:
+              example:
+                results:
+                  - id: 2
+                    name: Jane Smith
+                    age: 22
+                  - id: 3
+                    name: Bob Johnson
+                    age: 21
