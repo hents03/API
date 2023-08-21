@@ -1,0 +1,119 @@
+openapi: 3.0.0
+info:
+  title: API des étudiants et enseignants
+  version: 1.0.1
+
+paths:
+  /students/{id}:
+    get:
+      summary: Obtient les détails d'un étudiant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Succès
+          content:
+            application/json:
+              example:
+                id: 1
+                name: John Doe
+                age: 20
+
+    put:
+      summary: Met à jour les détails d'un étudiant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '204':
+          description: Mis à jour avec succès
+
+    delete:
+      summary: Supprime un étudiant
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Supprimé avec succès
+
+  /students:
+    post:
+      summary: Ajoute un nouvel étudiant
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '201':
+          description: Créé avec succès
+
+  /students/search:
+    get:
+      summary: Recherche d'étudiants
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succès
+          content:
+            application/json:
+              example:
+                results:
+                  - id: 2
+                    name: Jane Smith
+                    age: 22
+                  - id: 3
+                    name: Bob Johnson
+                    age: 21
+/teachers:
+    get:
+      summary: Obtient la liste des enseignants
+      responses:
+        '200':
+          description: Succès
+          content:
+            application/json:
+              example:
+                teachers:
+                  - id: 1
+                    name: Toky Ramarozaka
+                    courses:
+                      - name: données1
+                        schedule: Lundi 10:00 - 12:00
+                      - name: web1
+                        schedule: Mercredi 14:00 - 16:00
+                      - name: prog1
+                        schedule: Vendredi 09:00 - 11:00
