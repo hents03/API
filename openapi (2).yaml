@@ -117,3 +117,28 @@ paths:
                         schedule: Mercredi 14:00 - 16:00
                       - name: prog1
                         schedule: Vendredi 09:00 - 11:00
+                  - id: 2
+                    name: bako hary
+                    courses:
+                    - name : sys1
+                    - schedule : Lundi 08:00 - 10:00
+  /teachers:
+    post:
+      summary: Ajoute un nouvel professeur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                age:
+                  type: integer
+      responses:
+        '201':
+          description: Créé avec succès
+                    
+                    
+                   
