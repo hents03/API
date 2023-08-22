@@ -2,7 +2,8 @@ openapi: 3.0.0
 info:
   title: API des étudiants et enseignants
   version: 1.0.1
-
+  
+  
 paths:
   /students/{id}:
     get:
@@ -122,9 +123,8 @@ paths:
                     courses:
                     - name : sys1
                     - schedule : Lundi 08:00 - 10:00
-  /teachers:
     post:
-      summary: Ajoute un nouvel professeur
+      summary: Ajoute un nouvel enseignant
       requestBody:
         required: true
         content:
@@ -136,9 +136,25 @@ paths:
                   type: string
                 age:
                   type: integer
+                courses:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      schedule:
+                        type: string
       responses:
         '201':
           description: Créé avec succès
+
+
+
+
+
+
+
                     
                     
                    
